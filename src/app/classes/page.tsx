@@ -144,7 +144,7 @@ export default function ClassesPage() {
           >
             <option value="ALL">All Locations</option>
             {locations.map(l => (
-              <option key={l} value={l}>{l === "CRYSTAL" ? "Crystal" : "Crystal G"}</option>
+              <option key={l} value={l}>{l === "CRYSTAL" ? "Krystal" : "Krystal G"}</option>
             ))}
           </select>
         </div>

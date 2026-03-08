@@ -4,8 +4,8 @@ import { Providers } from "@/components/Providers";
 import { Navbar } from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Crystal Tennis Court",
-  description: "Book tennis courts and classes at Crystal & Crystal G",
+  title: "Krystal Tennis Court",
+  description: "Book tennis courts and classes at Krystal & Krystal G",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

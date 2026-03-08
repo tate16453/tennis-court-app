@@ -12,13 +12,13 @@ async function main() {
   const crystal = await prisma.location.upsert({
     where: { name: "CRYSTAL" },
     update: {},
-    create: { name: "CRYSTAL", displayName: "Crystal" },
+    create: { name: "CRYSTAL", displayName: "Krystal" },
   });
 
   const crystalG = await prisma.location.upsert({
     where: { name: "CRYSTAL_G" },
     update: {},
-    create: { name: "CRYSTAL_G", displayName: "Crystal G" },
+    create: { name: "CRYSTAL_G", displayName: "Krystal G" },
   });
 
   // Courts for Crystal (8 courts)

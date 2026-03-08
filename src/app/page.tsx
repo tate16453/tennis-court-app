@@ -10,9 +10,9 @@ export default function HomePage() {
             <span className="w-2 h-2 bg-green-300 rounded-full"></span>
             Online Reservations Now Available
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Crystal Tennis Courts</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Krystal Tennis Courts</h1>
           <p className="text-green-100 text-lg mb-8 max-w-2xl mx-auto">
-            Book courts and classes at Crystal & Crystal G. No more group chat reservations — instant confirmation, real-time availability.
+            Book courts and classes at Krystal & Krystal G. No more group chat reservations — instant confirmation, real-time availability.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/courts" className="bg-white text-green-800 font-semibold px-8 py-3 rounded-lg hover:bg-green-50 transition-colors">
@@ -31,13 +31,13 @@ export default function HomePage() {
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow">
             <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4 text-2xl">🎾</div>
-            <h3 className="text-xl font-bold text-slate-800 mb-2">Crystal</h3>
+            <h3 className="text-xl font-bold text-slate-800 mb-2">Krystal</h3>
             <p className="text-slate-500 mb-4">Location A · 8 tennis courts</p>
             <Link href="/courts?location=CRYSTAL" className="text-green-600 font-medium hover:text-green-700 text-sm">View courts →</Link>
           </div>
           <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow">
             <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4 text-2xl">🎾</div>
-            <h3 className="text-xl font-bold text-slate-800 mb-2">Crystal G</h3>
+            <h3 className="text-xl font-bold text-slate-800 mb-2">Krystal G</h3>
             <p className="text-slate-500 mb-4">Location B · 9 tennis courts</p>
             <Link href="/courts?location=CRYSTAL_G" className="text-blue-600 font-medium hover:text-blue-700 text-sm">View courts →</Link>
           </div>

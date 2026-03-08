@@ -21,7 +21,7 @@ export function Navbar() {
           <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
             <span className="text-white text-xs font-bold">TC</span>
           </div>
-          <span className="font-bold text-slate-800 text-lg hidden sm:block">Crystal Tennis</span>
+          <span className="font-bold text-slate-800 text-lg hidden sm:block">Krystal Tennis</span>
         </Link>
 
         {/* Nav Links */}

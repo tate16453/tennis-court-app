@@ -36,7 +36,7 @@ export default function LoginPage() {
               <span className="text-white text-2xl">🎾</span>
             </div>
             <h1 className="text-2xl font-bold text-slate-800">Sign In</h1>
-            <p className="text-slate-500 text-sm mt-1">Welcome back to Crystal Tennis</p>
+            <p className="text-slate-500 text-sm mt-1">Welcome back to Krystal Tennis</p>
           </div>
 
           {error && (
