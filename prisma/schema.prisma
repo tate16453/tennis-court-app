@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  firstName     String
+  lastName      String
+  nickname      String?
+  lineUserId    String?
+  role          String    @default("CUSTOMER")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  courtReservations  CourtReservation[]
+  classReservations  ClassReservation[]
+  coachClasses       ClassSchedule[]   @relation("CoachClasses")
+}
+
+model Location {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  displayName String
+  courts      Court[]
+}
+
+model Court {
+  id           String   @id @default(cuid())
+  number       Int
+  name         String
+  locationId   String
+  location     Location @relation(fields: [locationId], references: [id])
+
+  courtReservations CourtReservation[]
+  classSchedules    ClassSchedule[]
+}
+
+model CourtReservation {
+  id          String   @id @default(cuid())
+  userId      String
+  courtId     String
+  date        String
+  startTime   String
+  endTime     String
+  status      String   @default("CONFIRMED")
+  firstName   String
+  lastName    String
+  nickname    String?
+  lineUserId  String?
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id])
+  court       Court    @relation(fields: [courtId], references: [id])
+}
+
+model ClassSchedule {
+  id              String   @id @default(cuid())
+  title           String
+  coachId         String
+  courtId         String
+  dayOfWeek       Int
+  startTime       String
+  endTime         String
+  maxParticipants Int      @default(6)
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  coach           User     @relation("CoachClasses", fields: [coachId], references: [id])
+  court           Court    @relation(fields: [courtId], references: [id])
+  sessions        ClassSession[]
+}
+
+model ClassSession {
+  id              String   @id @default(cuid())
+  classScheduleId String
+  date            String
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+
+  classSchedule   ClassSchedule      @relation(fields: [classScheduleId], references: [id])
+  reservations    ClassReservation[]
+}
+
+model ClassReservation {
+  id             String   @id @default(cuid())
+  userId         String
+  classSessionId String
+  firstName      String
+  lastName       String
+  nickname       String?
+  lineUserId     String?
+  status         String   @default("CONFIRMED")
+  createdAt      DateTime @default(now())
+
+  user           User         @relation(fields: [userId], references: [id])
+  classSession   ClassSession @relation(fields: [classSessionId], references: [id])
+}

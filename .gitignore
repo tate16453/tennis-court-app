@@ -39,3 +39,20 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/src/generated/prisma
+
+# database
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# prisma seed js (generated helper)
+/prisma/seed.js
+
+# local tool config
+.claude/
+
+# windows null device artifact
+nul
