@@ -1,11 +1,11 @@
 import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
 import bcrypt from "bcryptjs";
-import path from "path";
 
-const dbPath = path.resolve(__dirname, "dev.db");
-const prisma = new PrismaClient({
-  datasourceUrl: `file:${dbPath}`,
-});
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const adapter = new PrismaPg(pool);
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   // Locations
@@ -21,7 +21,7 @@ async function main() {
     create: { name: "CRYSTAL_G", displayName: "Krystal G" },
   });
 
-  // Courts for Crystal (8 courts)
+  // Courts for Krystal (8 courts)
   for (let i = 1; i <= 8; i++) {
     await prisma.court.upsert({
       where: { id: `crystal-court-${i}` },
@@ -30,7 +30,7 @@ async function main() {
     });
   }
 
-  // Courts for Crystal G (9 courts)
+  // Courts for Krystal G (9 courts)
   for (let i = 1; i <= 9; i++) {
     await prisma.court.upsert({
       where: { id: `crystalg-court-${i}` },
@@ -48,7 +48,7 @@ async function main() {
       email: "admin@crystal.tennis",
       password: adminPassword,
       firstName: "Admin",
-      lastName: "Crystal",
+      lastName: "Krystal",
       role: "ADMIN",
     },
   });
@@ -102,7 +102,7 @@ async function main() {
     }
   }
 
-  console.log("Seed completed successfully!");
+  console.log("✅ Seed completed successfully!");
 }
 
 main()
