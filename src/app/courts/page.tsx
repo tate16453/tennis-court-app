@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { format, addDays, startOfDay } from "date-fns";
@@ -20,6 +20,14 @@ type BookingForm = {
 };
 
 export default function CourtsPage() {
+  return (
+    <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-8 text-slate-400">Loading courts...</div>}>
+      <CourtsPageContent />
+    </Suspense>
+  );
+}
+
+function CourtsPageContent() {
   const { data: session } = useSession();
   const searchParams = useSearchParams();
   const router = useRouter();
