@@ -161,7 +161,7 @@ function CourtsPageContent() {
             ))}
           </select>
         </div>
-        <div className="ml-auto flex items-center gap-3 text-xs">
+        <div className="flex items-center gap-3 text-xs">
           <span className="flex items-center gap-1.5">
             <span className="w-3 h-3 rounded bg-green-500"></span> Available
           </span>
@@ -235,7 +235,7 @@ function CourtsPageContent() {
 
       {/* Booking Modal */}
       {showBookingModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4 py-6 overflow-y-auto">
           <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-bold text-slate-800">Book Court</h2>
@@ -307,7 +307,7 @@ function CourtsPageContent() {
                         />
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-3 mt-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1">Nickname</label>
                         <input

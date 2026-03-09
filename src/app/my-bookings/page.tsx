@@ -34,12 +34,12 @@ export default function MyBookingsPage() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-slate-800 mb-6">My Bookings</h1>
 
-      <div className="flex gap-2 mb-6">
+      <div className="flex flex-col sm:flex-row gap-2 mb-6">
         {(["courts", "classes"] as const).map(tab => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-colors w-full sm:w-auto text-center ${
               activeTab === tab ? "bg-green-600 text-white" : "bg-white border border-slate-200 text-slate-600 hover:border-green-400"
             }`}
           >
@@ -55,7 +55,7 @@ export default function MyBookingsPage() {
               No court bookings yet.
             </div>
           ) : courtBookings.map((b: any) => (
-            <div key={b.id} className="bg-white rounded-xl border border-slate-200 p-4 flex items-center gap-4">
+            <div key={b.id} className="bg-white rounded-xl border border-slate-200 p-4 flex items-start gap-3">
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-lg">🎾</div>
               <div className="flex-1">
                 <p className="font-semibold text-slate-800">{b.court.location.displayName} — {b.court.name}</p>
@@ -63,7 +63,7 @@ export default function MyBookingsPage() {
                   {format(parseISO(b.date), "EEE, MMM d yyyy")} · {b.startTime} – {b.endTime}
                 </p>
               </div>
-              <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+              <span className={`text-xs px-2.5 py-1 rounded-full font-medium flex-shrink-0 ${
                 b.status === "CONFIRMED" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"
               }`}>
                 {b.status}
@@ -80,7 +80,7 @@ export default function MyBookingsPage() {
               No class registrations yet.
             </div>
           ) : classBookings.map((b: any) => (
-            <div key={b.id} className="bg-white rounded-xl border border-slate-200 p-4 flex items-center gap-4">
+            <div key={b.id} className="bg-white rounded-xl border border-slate-200 p-4 flex items-start gap-3">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-lg">🏫</div>
               <div className="flex-1">
                 <p className="font-semibold text-slate-800">{b.classSession.classSchedule.title}</p>
@@ -90,7 +90,7 @@ export default function MyBookingsPage() {
                   {b.classSession.classSchedule.court.location.displayName} Court {b.classSession.classSchedule.court.number}
                 </p>
               </div>
-              <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+              <span className={`text-xs px-2.5 py-1 rounded-full font-medium flex-shrink-0 ${
                 b.status === "CONFIRMED" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"
               }`}>
                 {b.status}

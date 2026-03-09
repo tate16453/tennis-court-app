@@ -96,12 +96,12 @@ export default function DashboardPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-slate-800">Coach Dashboard</h1>
           <p className="text-slate-500 text-sm mt-1">Manage class schedules and view registrations</p>
         </div>
-        <div className="text-sm text-slate-500">
+        <div className="text-sm text-slate-500 text-right sm:text-left">
           Logged in as: <span className="font-medium text-slate-700">{(session?.user as any)?.firstName}</span>
           <span className={`ml-2 text-xs px-2 py-0.5 rounded-full ${role === "ADMIN" ? "bg-purple-100 text-purple-700" : "bg-blue-100 text-blue-700"}`}>
             {role}
@@ -120,7 +120,7 @@ export default function DashboardPage() {
       </div>
 
       {activeTab === "add" && (
-        <div className="bg-white rounded-xl border border-slate-200 p-6 max-w-lg">
+        <div className="bg-white rounded-xl border border-slate-200 p-4 sm:p-6 max-w-full sm:max-w-lg">
           <h2 className="font-bold text-slate-800 mb-4">Create New Class Schedule</h2>
           {addError && <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg px-3 py-2 mb-4">{addError}</div>}
           <div className="space-y-3">
@@ -154,7 +154,7 @@ export default function DashboardPage() {
                 {DAYS_FULL.map((d, i) => <option key={i} value={i}>{d}</option>)}
               </select>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-slate-600 mb-1">Start Time</label>
                 <input type="time" value={newClass.startTime} onChange={e => setNewClass(f => ({ ...f, startTime: e.target.value }))}
@@ -190,7 +190,7 @@ export default function DashboardPage() {
             <div className="text-center py-12 bg-white rounded-xl border border-slate-200 text-slate-400">No classes yet.</div>
           ) : classes.map(cls => (
             <div key={cls.id} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-              <div className="flex items-center gap-4 p-4 border-b border-slate-100">
+              <div className="flex items-start gap-3 p-4 border-b border-slate-100">
                 <div className={`w-2 h-10 rounded-full ${cls.court.location.name === "CRYSTAL" ? "bg-green-500" : "bg-blue-500"}`}></div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2">

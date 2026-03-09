@@ -117,7 +117,7 @@ export default function ClassesPage() {
       <div className="bg-white rounded-xl border border-slate-200 p-4 mb-6 flex flex-wrap gap-3 items-center">
         <div>
           <label className="block text-xs font-medium text-slate-500 mb-1">Day</label>
-          <div className="flex gap-1 flex-wrap">
+          <div className="flex gap-1 overflow-x-auto pb-1 scrollbar-hide" style={{WebkitOverflowScrolling:"touch"}}>
             <button
               onClick={() => setFilterDay("ALL")}
               className={`px-3 py-1.5 text-xs rounded-lg border transition-colors ${filterDay === "ALL" ? "bg-green-600 text-white border-green-600" : "border-slate-200 text-slate-600 hover:border-green-400"}`}
@@ -135,7 +135,7 @@ export default function ClassesPage() {
             ))}
           </div>
         </div>
-        <div className="ml-auto">
+        <div>
           <label className="block text-xs font-medium text-slate-500 mb-1">Location</label>
           <select
             value={filterLocation}
@@ -164,7 +164,7 @@ export default function ClassesPage() {
 
       {/* Booking Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4 py-6 overflow-y-auto">
           <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-bold text-slate-800">Register for Class</h2>
@@ -193,7 +193,7 @@ export default function ClassesPage() {
 
                 <div className="space-y-3">
                   <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Contact Information</p>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium text-slate-600 mb-1">First Name *</label>
                       <input type="text" required value={bookingForm.firstName}
@@ -209,7 +209,7 @@ export default function ClassesPage() {
                       />
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium text-slate-600 mb-1">Nickname</label>
                       <input type="text" value={bookingForm.nickname}
