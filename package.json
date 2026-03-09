@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint",
     "seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts"
@@ -14,12 +14,10 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
-    "@prisma/adapter-better-sqlite3": "^7.4.2",
     "@prisma/client": "^7.4.2",
     "@types/bcryptjs": "^2.4.6",
     "autoprefixer": "^10.4.27",
     "bcryptjs": "^3.0.3",
-    "better-sqlite3": "^12.6.2",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
